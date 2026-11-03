@@ -1,6 +1,9 @@
 # SCADA / HMI Production Line Monitoring Simulation
 
-A SCADA-style **HMI** for a simulated 3-station bottling line: live station status, trend charts, an alarm banner, alarm acknowledgement and alarm history. The tag and alarm model is designed the way SCADA platforms like Ignition work.
+A simulated 3-station bottling line with two ways to monitor it:
+
+1. **Ignition SCADA (Perspective):** the simulator runs an **OPC-UA server**. Ignition connects to it, and a ready-made **tag import** (`ignition_tags.json`) creates the tags, alarms and history. See **[IGNITION_GUIDE.md](IGNITION_GUIDE.md)**.
+2. **Built-in web HMI (Flask):** a lightweight HMI with live station status, trends, an alarm banner, acknowledgement and alarm history.
 
 ![HMI screenshot](hmi_screenshot.png)
 
@@ -33,7 +36,24 @@ line_simulator.py  ──writes──►  tags.py (Tag DB + Alarm manager)  ◄�
 
 Every alarm transition (ACTIVE, ACKED, CLEARED) is stored in `alarms.db`, which gives you an alarm journal for troubleshooting.
 
-## Run it
+## Run it on Ignition
+
+```bash
+pip install -r requirements.txt
+python opcua_server.py      # OPC-UA server: opc.tcp://localhost:4841/linesim/
+docker compose up -d        # PostgreSQL for tag history + alarm journal
+```
+
+Then in Ignition: add an OPC-UA connection named `LineSim`, import `ignition_tags.json`, and build the Perspective views. The full steps are in [IGNITION_GUIDE.md](IGNITION_GUIDE.md).
+
+| OPC-UA node | Ignition tag | Alarm |
+|---|---|---|
+| `ns=2;s=Line1/<STATION>/StateCode` | `Line1/<STATION>/StateCode` (Int4) | = 2 → HIGH "faulted" |
+| `ns=2;s=Line1/<STATION>/MotorTemp` | `Line1/<STATION>/MotorTemp` (Float8, history) | > 85 °C → MEDIUM |
+| `ns=2;s=Line1/<STATION>/Count` | `Line1/<STATION>/Count` (Int4, history) | — |
+| `ns=2;s=Line1/LINE/TankLevel` | `Line1/LINE/TankLevel` (Float8, history) | < 15 % → MEDIUM |
+
+## Run the built-in web HMI
 
 ```bash
 pip install -r requirements.txt
@@ -52,4 +72,4 @@ pytest -q
 
 ## Tech
 
-Python · Flask · SQLite · HTML5 canvas trends · SCADA concepts (tags, quality, alarm priorities, acknowledgement)
+Ignition (OPC-UA connection, tag import with alarms + history; Perspective screens per guide) · OPC-UA (asyncua) · PostgreSQL · Python · Flask · SQLite

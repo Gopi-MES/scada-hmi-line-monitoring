@@ -1,0 +1,233 @@
+{
+  "name": "Line1",
+  "tagType": "Folder",
+  "tags": [
+    {
+      "name": "FILLER",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "State",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "opcServer": "LineSim",
+          "opcItemPath": "ns=2;s=Line1/FILLER/State",
+          "dataType": "String"
+        },
+        {
+          "name": "StateCode",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "opcServer": "LineSim",
+          "opcItemPath": "ns=2;s=Line1/FILLER/StateCode",
+          "dataType": "Int4",
+          "alarms": [
+            {
+              "name": "Fault",
+              "mode": "Equality",
+              "setpointA": 2.0,
+              "priority": "High",
+              "displayPath": "Line1/FILLER",
+              "label": "FILLER faulted"
+            }
+          ]
+        },
+        {
+          "name": "Count",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "opcServer": "LineSim",
+          "opcItemPath": "ns=2;s=Line1/FILLER/Count",
+          "dataType": "Int4",
+          "historyEnabled": true,
+          "historyProvider": "LineHistory"
+        },
+        {
+          "name": "MotorTemp",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "opcServer": "LineSim",
+          "opcItemPath": "ns=2;s=Line1/FILLER/MotorTemp",
+          "dataType": "Float8",
+          "engUnit": "°C",
+          "alarms": [
+            {
+              "name": "MotorTempHigh",
+              "mode": "AboveValue",
+              "setpointA": 85.0,
+              "priority": "Medium",
+              "displayPath": "Line1/FILLER",
+              "label": "FILLER motor temperature high"
+            }
+          ],
+          "historyEnabled": true,
+          "historyProvider": "LineHistory"
+        }
+      ]
+    },
+    {
+      "name": "CAPPER",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "State",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "opcServer": "LineSim",
+          "opcItemPath": "ns=2;s=Line1/CAPPER/State",
+          "dataType": "String"
+        },
+        {
+          "name": "StateCode",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "opcServer": "LineSim",
+          "opcItemPath": "ns=2;s=Line1/CAPPER/StateCode",
+          "dataType": "Int4",
+          "alarms": [
+            {
+              "name": "Fault",
+              "mode": "Equality",
+              "setpointA": 2.0,
+              "priority": "High",
+              "displayPath": "Line1/CAPPER",
+              "label": "CAPPER faulted"
+            }
+          ]
+        },
+        {
+          "name": "Count",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "opcServer": "LineSim",
+          "opcItemPath": "ns=2;s=Line1/CAPPER/Count",
+          "dataType": "Int4",
+          "historyEnabled": true,
+          "historyProvider": "LineHistory"
+        },
+        {
+          "name": "MotorTemp",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "opcServer": "LineSim",
+          "opcItemPath": "ns=2;s=Line1/CAPPER/MotorTemp",
+          "dataType": "Float8",
+          "engUnit": "°C",
+          "alarms": [
+            {
+              "name": "MotorTempHigh",
+              "mode": "AboveValue",
+              "setpointA": 85.0,
+              "priority": "Medium",
+              "displayPath": "Line1/CAPPER",
+              "label": "CAPPER motor temperature high"
+            }
+          ],
+          "historyEnabled": true,
+          "historyProvider": "LineHistory"
+        }
+      ]
+    },
+    {
+      "name": "LABELER",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "State",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "opcServer": "LineSim",
+          "opcItemPath": "ns=2;s=Line1/LABELER/State",
+          "dataType": "String"
+        },
+        {
+          "name": "StateCode",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "opcServer": "LineSim",
+          "opcItemPath": "ns=2;s=Line1/LABELER/StateCode",
+          "dataType": "Int4",
+          "alarms": [
+            {
+              "name": "Fault",
+              "mode": "Equality",
+              "setpointA": 2.0,
+              "priority": "High",
+              "displayPath": "Line1/LABELER",
+              "label": "LABELER faulted"
+            }
+          ]
+        },
+        {
+          "name": "Count",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "opcServer": "LineSim",
+          "opcItemPath": "ns=2;s=Line1/LABELER/Count",
+          "dataType": "Int4",
+          "historyEnabled": true,
+          "historyProvider": "LineHistory"
+        },
+        {
+          "name": "MotorTemp",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "opcServer": "LineSim",
+          "opcItemPath": "ns=2;s=Line1/LABELER/MotorTemp",
+          "dataType": "Float8",
+          "engUnit": "°C",
+          "alarms": [
+            {
+              "name": "MotorTempHigh",
+              "mode": "AboveValue",
+              "setpointA": 85.0,
+              "priority": "Medium",
+              "displayPath": "Line1/LABELER",
+              "label": "LABELER motor temperature high"
+            }
+          ],
+          "historyEnabled": true,
+          "historyProvider": "LineHistory"
+        }
+      ]
+    },
+    {
+      "name": "LINE",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "Speed",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "opcServer": "LineSim",
+          "opcItemPath": "ns=2;s=Line1/LINE/Speed",
+          "dataType": "Float8",
+          "engUnit": "bpm",
+          "historyEnabled": true,
+          "historyProvider": "LineHistory"
+        },
+        {
+          "name": "TankLevel",
+          "tagType": "AtomicTag",
+          "valueSource": "opc",
+          "opcServer": "LineSim",
+          "opcItemPath": "ns=2;s=Line1/LINE/TankLevel",
+          "dataType": "Float8",
+          "engUnit": "%",
+          "alarms": [
+            {
+              "name": "TankLow",
+              "mode": "BelowValue",
+              "setpointA": 15.0,
+              "priority": "Medium",
+              "displayPath": "Line1/LINE",
+              "label": "Product tank level low"
+            }
+          ],
+          "historyEnabled": true,
+          "historyProvider": "LineHistory"
+        }
+      ]
+    }
+  ]
+}

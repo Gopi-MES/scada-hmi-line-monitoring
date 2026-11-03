@@ -1,0 +1,9 @@
+# PostgreSQL for Ignition tag history and the alarm journal
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ignition
+      POSTGRES_PASSWORD: ignition
+      POSTGRES_DB: linehistory
+    ports: ["5432:5432"]
